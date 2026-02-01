@@ -39,6 +39,49 @@ i.Department:Department to which an employee belongs to
 
 j.salary: Salary in USD
 
+ 
+During the development and deployment of the Employee Turnover Analysis Flask Application, several important lessons were learned:
+
+1. Initial Success
+- The Flask website worked well locally with the trained model and preprocessing pipeline.
+- Confidence was high, so a Dockerfile was written to containerize the application.
+
+2. First Major Error
+- When running the Docker container, the application threw:
+   ModuleNotFoundError: No module named 'sklearn.ensemble._gb_losses'
+- This error was caused by a scikit-learn version mismatch:
+- Old pickle files (model.pkl, preprocessor.pkl) were created with an older scikit-learn version.
+- Newer versions removed internal modules like _gb_losses.
+
+3. Options Considered
+- Quick Fix: Downgrade scikit-learn to the older version (compatible with the pickle files).
+- Long-Term Fix: Upgrade scikit-learn, delete old pickle files, and retrain the model for future stability.
+
+4. Chosen Path
+- Opted for the long-term fix:
+- Deleted old pickle files.
+- Installed newer versions of scikit-learn.
+- Noticed dependency warnings: numba and opencv-python were incompatible with the latest NumPy.
+- Upgraded those libraries as well to ensure compatibility.
+
+5. Retraining
+- Retrained the ML model and preprocessing pipeline.
+- New pickle files (model.pkl, preprocessor.pkl) were generated with the updated environment.
+
+6. Final Outcome
+- The Flask website now runs successfully inside Docker with the new setup.
+- The project is future-proofed with:
+- Updated dependencies.
+- Reproducible training pipeline.
+- Clear separation of preprocessing and model pickle files.
+
+🚀 Key Takeaways
+- Always pin dependency versions in requirements.txt or environment.yml to avoid mismatches.
+- Avoid relying on private scikit-learn modules (_gb_losses) — stick to public APIs.
+- When upgrading libraries, check for downstream compatibility (NumPy, numba, OpenCV, etc.).
+- Retraining models after major library upgrades ensures long-term stability and reproducibility.
+
+
 
 
 

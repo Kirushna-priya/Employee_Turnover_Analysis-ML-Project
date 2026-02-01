@@ -84,7 +84,7 @@ class ModelTrainer:
 
             # Evaluate all model
 
-            model_report = evaluate_models(x_train, y_train, x_test, y_test, models=models)
+            model_report = evaluate_models(models,x_train, y_train, x_test, y_test)
             print(model_report)  # Debug: see all metrics
 
             best_model_name = model_report["Accuracy"].idxmax()
