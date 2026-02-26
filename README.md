@@ -30,6 +30,7 @@ This project predicts whether an employee will leave using historical HR data an
 ---
 
 ## 📁 Repository Structure
+```text
 
 ├── artifacts/ # Model artifacts and pickle files
 ├── notebook/ # Exploratory analyses and experimentation
@@ -43,7 +44,7 @@ This project predicts whether an employee will leave using historical HR data an
 ├── Dockerfile # Container config
 ├── README.md
 └── setup.py
-
+```
 ## 📊 Dataset
 
 Data source: https://www.kaggle.com/liujiaqi/hr-comma-sepcsv
@@ -76,7 +77,8 @@ Evaluation metrics include:
 
   **MODEL 1: Logistic Regression + 5 fold CV**
 
-   precision    recall  f1-score   support
+```text
+    precision    recall  f1-score   support
 
            0       0.96      0.77      0.85     10000
            1       0.41      0.82      0.55      1991
@@ -84,10 +86,10 @@ Evaluation metrics include:
     accuracy                           0.78     11991
    macro avg       0.68      0.79      0.70     11991
 weighted avg       0.86      0.78      0.80     11991
-
-   **MODEL 2: Random Forest Classifier + 5 Fold CV**
-
-   precision    recall  f1-score   support
+```
+**MODEL 2: Random Forest Classifier + 5 Fold CV**
+```text
+    precision    recall  f1-score   support
 
            0       0.98      1.00      0.99     10000
            1       0.98      0.91      0.95      1991
@@ -95,10 +97,10 @@ weighted avg       0.86      0.78      0.80     11991
     accuracy                           0.98     11991
    macro avg       0.98      0.96      0.97     11991
 weighted avg       0.98      0.98      0.98     11991
-
+```
   **MODEL 3: Gradient Boosting Classifier + 5 Fold CV**
-
-  precision    recall  f1-score   support
+```text
+    precision    recall  f1-score   support
 
            0       0.99      0.98      0.98     10000
            1       0.91      0.93      0.92      1991
@@ -106,7 +108,7 @@ weighted avg       0.98      0.98      0.98     11991
     accuracy                           0.97     11991
    macro avg       0.95      0.95      0.95     11991
 weighted avg       0.97      0.97      0.97     11991
-
+```
 -  Clearly the performance of Random Forest Classifier model and Gradient Boosting Classifier are the best with recall value for class 1 as 0.91 and 0.93 respectively.
 
 - According to the problem statement, **recall** is the most important metric because a false negative entry becomes costly for the company.
